@@ -1,0 +1,20 @@
+{
+  "name": "dotpay_widget",
+  "version": "1.0.0",
+  "description": "Dotpay widget allows merchants to offer displayed payment channels list in their shops",
+  "main": "dist/widget.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "dotpay",
+    "widget"
+  ],
+  "author": "Tomasz Bajorek <tbajorek3@gmail.com>",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "css-loader": "^0.28.4",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.3.0"
+  }
+}

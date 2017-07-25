@@ -1,0 +1,124 @@
+.dotpay-widget-container {
+
+}
+
+.dotpay-loader {
+    border: 7px solid #f3f3f3;
+    border-top: 7px solid #922224;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1.5s cubic-bezier(0.03, 0.17, 0.96, 0.87) infinite;
+    margin: auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.dotpay-widget-error {
+    background-color: #ffe7e7;
+    color: #990000;
+    border: 1px solid #990000;
+    padding: 10px;
+    font-size: 14px;
+    display: none;
+    margin-left: 2px;
+}
+
+.dotpay-widget-error.visible {
+    display: block;
+}
+
+.dotpay-channels-container {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.dotpay-channel {
+    background: #f7f7f7;
+    border: 1px solid #dddddd;
+    cursor: pointer;
+    display: inline-block;
+    height: 85px;
+    position: relative;
+    margin: 2px;
+    min-width: 150px;
+    transition: all .1s ease-in-out;
+    -moz-transition: all .1s ease-in-out;
+    -o-transition: all .1s ease-in-out;
+    -webkit-transition: all .1s ease-in-out;
+}
+
+.dotpay-channel:hover {
+    background: #ffffff;
+    border: 1px solid #909a9a;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.dotpay-channel.selected {
+    background: #d8d8d8;
+    border: 1px solid #515656 !important;
+}
+
+.dotpay-channel * {
+    cursor: pointer;
+}
+
+.dotpay-channel input {
+    display: none;
+}
+
+.dotpay-channel.inactive {
+    border: 1px solid #dddddd;
+}
+
+.dotpay-channel.inactive * {
+    opacity: 0.67;
+}
+
+.dotpay-channel.inactive.selected * {
+    opacity: 0.85 !important;
+}
+
+.dotpay-channel > .dotpay-information {
+    z-index: 99;
+    position: absolute;
+    top: 0;
+    color: #f5f5f5;
+    padding: 2px 5px;
+    text-align: center;
+    background-color: #222222;
+    -moz-transition: all .1s ease-in-out;
+    -o-transition: all .1s ease-in-out;
+    -webkit-transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
+    opacity: 0.9;
+    width: 140px;
+    display: none;
+}
+
+.dotpay-channel .dotpay-logo-container {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.dotpay-channel img {
+    width: 100px;
+}
+
+.dotpay-body-container {
+    width: 100%;
+    bottom: 8px;
+    left: 0;
+    font-size: 13px;
+    text-align: center !important;
+    position: absolute;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    display: block !important;
+}
