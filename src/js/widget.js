@@ -11,17 +11,28 @@ define('widget', ['jquery', './config', './error', './xhr', './view'], function(
         view: v,
         registry: {}
     };
-    window.dotpayWidget = {
+    var dotpayWidget = {
         init: function(cfg) {
-            env.config = config(cfg);
-            env.view.init(env);
+            if(typeof cfg === 'undefined' && typeof window !== 'undefined' && typeof window.dotpayConfig !== 'undefined') {
+                env.config = config(window.dotpayConfig);
+            } else {
+                env.config = config(cfg);
+            }
+            var widgetObject = env.view.init(env);
             env.error.init(env);
             env.xhr.init(env);
             env.view.showLoader();
             env.xhr.callForChannels(env.view.render);
+            return widgetObject;
         },
         getChannel: function() {
             return env.view.getSelected();
         }
+    };
+
+    if(typeof window !== 'undefined') {
+        window.dotpayWidget = dotpayWidget;
     }
+
+    return dotpayWidget;
 });

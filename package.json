@@ -8,13 +8,21 @@
   },
   "keywords": [
     "dotpay",
-    "widget"
+    "widget",
+    "payments"
   ],
   "author": "Tomasz Bajorek <tbajorek3@gmail.com>",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "devDependencies": {
     "css-loader": "^0.28.4",
     "style-loader": "^0.18.2",
     "webpack": "^3.3.0"
+  },
+  "bugs": {
+    "url": "https://github.com/tbajorek/dotpay-widget/issues"
+  },
+  "homepage": "https://github.com/tbajorek/dotpay-widget",
+  "scripts": {
+    "start": "node_modules/.bin/webpack --config webpack.config.js"
   }
 }

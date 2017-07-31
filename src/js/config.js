@@ -5,15 +5,15 @@ define('config', ['jquery'], function($) {
     function getDefaultConfig() {
         return {
             payment: {
-                sellerId: 723289, //ERROR TODO!!
+                sellerId: null,
                 amount: 1000.00,
                 currency: 'PLN',
                 lang: 'pl'
             },
             request: {
                 host: null,
-                test: true,
-                disabled: true,
+                test: false,
+                disabled: 'mark',
                 groups: null
             },
             view: {

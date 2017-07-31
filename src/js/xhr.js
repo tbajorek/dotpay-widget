@@ -2,7 +2,7 @@
  * AJAX provider module
  */
 define("xhr", ["jquery"], function($) {
-    var config, error, view;
+    var config, error, view, data;
     function buildUrl(config) {
         return config.request.host + "?id=" + config.payment.sellerId + "&amount=" + config.payment.amount + "&currency=" + config.payment.currency + "&lang=" + config.payment.lang + "&format=json";
     }
@@ -44,17 +44,16 @@ define("xhr", ["jquery"], function($) {
             view = env.view;
         },
         callForData: function(callback, field) {
-            $.getJSON(buildUrl(config)).done(function(data){
+            $.getJSON(buildUrl(config)).done(function(d){
+                data = d;
                 if(field === 'channels') {
                     data.channels = filterGroups(filterDisabled(data.channels, config.request.disabled), config.request.groups);
-                } else {
-                    data = d;
                 }
                 config.event.onLoad(data);
                 view.hideLoader();
                 call(callback, data, field);
             }).fail(function(jqxhr, status, e) {
-                error.display("Request to server failed: " + status + " " + error);
+                error.display("Request to server failed: " + status + " " + e);
             });
         },
         callForChannels: function(callback) {
