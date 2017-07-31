@@ -66,7 +66,9 @@ define("view", ["jquery"], function($) {
             widgetContainer.append(loader);
         },
         hideLoader: function() {
-            widgetContainer.find('.dotpay-loader').remove();
+            widgetContainer.find('.dotpay-loader').fadeIn(400, function(){
+                $(this).remove();
+            });
         },
         render: function(data) {
             channels = data;
@@ -74,6 +76,7 @@ define("view", ["jquery"], function($) {
             widgetContainer.find('.'+config.view.channelContainer).on('click', onClick);
             widgetContainer.find('.'+config.view.channelContainer).on('mouseover', onOver);
             widgetContainer.find('.'+config.view.channelContainer).on('mouseout', onOut);
+            widgetContainer.find('.dotpay-channels-container').fadeIn();
         },
         getSelected: function() {
             return selected;

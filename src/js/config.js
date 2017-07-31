@@ -2,7 +2,7 @@ define('config', ['jquery'], function($) {
     function getDefaultConfig() {
         return {
             payment: {
-                sellerId: null,
+                sellerId: 723289, //ERROR TODO!!
                 amount: 1000.00,
                 currency: 'PLN',
                 lang: 'pl'
