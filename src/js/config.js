@@ -1,3 +1,6 @@
+/**
+ * Config reader module
+ */
 define('config', ['jquery'], function($) {
     function getDefaultConfig() {
         return {

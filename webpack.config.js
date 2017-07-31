@@ -1,3 +1,6 @@
+var webpack = require("webpack");
+var fs = require("fs");
+
 module.exports = {
     entry: './src/js/widget.js',
     output: {
@@ -10,5 +13,8 @@ module.exports = {
                 loaders: ['style-loader', 'css-loader']
             }
         ]
-    }
+    },
+    plugins: [
+        new webpack.BannerPlugin(fs.readFileSync('./LICENSE', 'utf8')),
+    ]
 };

@@ -1,3 +1,6 @@
+/**
+ * Error handler module
+ */
 define("error", ["jquery"], function($) {
     var config;
 

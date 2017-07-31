@@ -1,3 +1,6 @@
+/**
+ * AJAX provider module
+ */
 define("xhr", ["jquery"], function($) {
     var config, error, view;
     function buildUrl(config) {

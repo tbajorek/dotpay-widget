@@ -1,5 +1,8 @@
 require('../css/main.css');
 
+/**
+ * Main module provides global visible object dotpayWidget
+ */
 define('widget', ['jquery', './config', './error', './xhr', './view'], function($, config, e, ajax, v) {
     var env = {
         config: null,

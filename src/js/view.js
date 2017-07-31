@@ -1,3 +1,6 @@
+/**
+ * View services (eg. rendering DOM) module
+ */
 define("view", ["jquery"], function($) {
     var config, channels, selected = null;
     var widgetContainer;
