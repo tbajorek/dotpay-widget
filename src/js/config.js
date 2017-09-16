@@ -14,6 +14,7 @@ define('config', ['jquery'], function($) {
                 host: null,
                 test: false,
                 disabled: 'mark',
+                hiddenChannels: [],
                 groups: null
             },
             view: {
@@ -34,7 +35,10 @@ define('config', ['jquery'], function($) {
         if(typeof config !== 'undefined') {
             $.extend(true, defaultConfig, config);
         }
+        defaultConfig.payment.sellerId = parseInt(defaultConfig.payment.sellerId);
+        defaultConfig.payment.amount = parseFloat(defaultConfig.payment.amount);
         if(defaultConfig.request.host === null) {
+            defaultConfig.request.test = Boolean(defaultConfig.request.test);
             if(defaultConfig.request.test) {
                 defaultConfig.request.host = 'https://ssl.dotpay.pl/test_payment/payment_api/v1/channels/'
             } else {

@@ -38,21 +38,22 @@ HTML element with class given in `view.widgetContainer` property has to exist wh
 ### Configuration
 This table contains all values you can set in widget configuration.
 
-| Property              | Type     | Description                                                                                                                     | Default value                                  |
-|-----------------------|----------|---------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------|
-| payment.sellerId      | int      | Seller id from Dotpay panel                                                                                                     | null                                           |
-| payment.amount        | double   | Amount of money                                                                                                                 | 1000.00                                        |
-| payment.currency      | string   | Code of currency                                                                                                                | `PLN`                                          |
-| payment.lang          | string   | Code of language                                                                                                                | `pl`                                           |
-| request.host          | string   | Host of request where is available data with payment channels                                                                   | *see more [details](#location-of-data-source)* |
-| request.test          | boolean  | Flag if test mode is used                                                                                                       | false                                          |
-| request.disabled      | string   | Value which informs how mode of displaying disabled channels is active (*see more [details](#displaying-of-disabled-channels)*) | `mark`                                         |
-| request.groups        | array    | Array of channel group ids which are displayed. If none is specified, channels from all groups will be displayed.               | null                                           |
-| view.widgetContainer  | string   | Class name of widget container                                                                                                  | `dotpay-widget-container`                      |
-| view.channelContainer | string   | Class name of single channel container                                                                                          | `dotpay-channel`                               |
-| view.errorContainer   | string   | Class name of error container                                                                                                   | `dotpay-widget-error`                          |
-| event.onLoad          | function | Handler of 'load widget' event (*see more [details](#events)*)                                                                  | *empty function*                               |
-| event.onChoose        | function | Handler of 'select channel' event (*see more [details](#events)*)                                                               | *empty function*                               |
+| Property               | Type     | Description                                                                                                                     | Default value                                  |
+|------------------------|----------|---------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------|
+| payment.sellerId       | int      | Seller id from Dotpay panel                                                                                                     | null                                           |
+| payment.amount         | double   | Amount of money                                                                                                                 | 1000.00                                        |
+| payment.currency       | string   | Code of currency                                                                                                                | `PLN`                                          |
+| payment.lang           | string   | Code of language                                                                                                                | `pl`                                           |
+| request.host           | string   | Host of request where is available data with payment channels                                                                   | *see more [details](#location-of-data-source)* |
+| request.test           | boolean  | Flag if test mode is used                                                                                                       | false                                          |
+| request.disabled       | string   | Value which informs how mode of displaying disabled channels is active (*see more [details](#displaying-of-disabled-channels)*) | `mark`                                         |
+| request.hiddenChannels | array    | Array of channel numbers which will not be displayed. This feature doesn't depend on data from server                           | null                                         |
+| request.groups         | array    | Array of channel group ids which are displayed. If none is specified, channels from all groups will be displayed.               | null                                           |
+| view.widgetContainer   | string   | Class name of widget container                                                                                                  | `dotpay-widget-container`                      |
+| view.channelContainer  | string   | Class name of single channel container                                                                                          | `dotpay-channel`                               |
+| view.errorContainer    | string   | Class name of error container                                                                                                   | `dotpay-widget-error`                          |
+| event.onLoad           | function | Handler of 'load widget' event (*see more [details](#events)*)                                                                  | *empty function*                               |
+| event.onChoose         | function | Handler of 'select channel' event (*see more [details](#events)*)                                                               | *empty function*                               |
 
 
 #### Location of data source

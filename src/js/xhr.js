@@ -13,6 +13,18 @@ define("xhr", ["jquery"], function($) {
             return callback(data[field]);
         }
     }
+    function filterHiddenChannels(data, filter) {
+        if(filter !== null && filter.length > 0) {
+            var newData = [];
+            for(var key in data) {
+                if(filter.indexOf(data[key].id)<0) {
+                    newData[newData.length] = data[key];
+                }
+            }
+            data = newData;
+        }
+        return data;
+    }
     function filterDisabled(data, filter) {
         if(filter === 'hide') {
             var newData = [];
@@ -47,7 +59,16 @@ define("xhr", ["jquery"], function($) {
             $.getJSON(buildUrl(config)).done(function(d){
                 data = d;
                 if(field === 'channels') {
-                    data.channels = filterGroups(filterDisabled(data.channels, config.request.disabled), config.request.groups);
+                    data.channels = filterHiddenChannels(
+                        filterGroups(
+                            filterDisabled(
+                                data.channels,
+                                config.request.disabled
+                            ),
+                            config.request.groups
+                        ),
+                        config.request.hiddenChannels
+                    );
                 }
                 config.event.onLoad(data);
                 view.hideLoader();

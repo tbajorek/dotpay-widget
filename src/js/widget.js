@@ -27,7 +27,8 @@ define('widget', ['jquery', './config', './error', './xhr', './view'], function(
         },
         getChannel: function() {
             return env.view.getSelected();
-        }
+        },
+        jQuery: $
     };
 
     if(typeof window !== 'undefined') {
