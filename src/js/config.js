@@ -22,6 +22,7 @@ define('config', ['jquery'], function($) {
                 channelContainer: 'dotpay-channel',
                 errorContainer: 'dotpay-widget-error',
                 chosenContainer: 'dotpay-chosen-container',
+                toggleStyle: 'fade',
                 information: true
             },
             event: {

@@ -50,7 +50,12 @@ define("view", ["jquery"], function($) {
         $(e.currentTarget).find('.dotpay-information').hide();
     }
     function onChosenToggle(e) {
-        $('.'+config.view.channelContainer).not('.dotpay-main-chosen').slideToggle();
+        var objects = $('.'+config.view.channelContainer).not('.dotpay-main-chosen');
+        if(config.view.toggleStyle === 'fade') {
+            objects.fadeToggle();
+        } else {
+            objects.slideToggle();
+        }
     }
     function copyChannelContainer(originalContainer) {
         var container = $(originalContainer).clone();

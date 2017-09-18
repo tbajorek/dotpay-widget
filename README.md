@@ -55,6 +55,8 @@ This table contains all values you can set in widget configuration.
 | view.channelContainer  | string   | Class name of single channel container                                                                                          | `dotpay-channel`                               |
 | view.errorContainer    | string   | Class name of error container                                                                                                   | `dotpay-widget-error`                          |
 | view.chosenContainer   | string   | Class name of container for chosen channel                                                                                      | `dotpay-chosen-container`                      |
+| view.toggleStyle       | string   | Name of style how should be toggle channels (available values: `fade` or `slide`)                                               | `fade`                                         |
+| view.information       | boolean  | Flag if message information should be displayed in channel                                                                      | true                                           |
 | event.onLoad           | function | Handler of 'load widget' event (*see more [details](#events)*)                                                                  | *empty function*                               |
 | event.onChoose         | function | Handler of 'select channel' event (*see more [details](#events)*)                                                               | *empty function*                               |
 
