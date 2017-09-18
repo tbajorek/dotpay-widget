@@ -49,19 +49,36 @@ define("view", ["jquery"], function($) {
         e.preventDefault();
         $(e.currentTarget).find('.dotpay-information').hide();
     }
+    function onChosenToggle(e) {
+        $('.'+config.view.channelContainer).not('.dotpay-main-chosen').slideToggle();
+    }
+    function copyChannelContainer(originalContainer) {
+        var container = $(originalContainer).clone();
+        container.find('.dotpay-information').remove();
+        container.removeClass('inactive');
+        container.addClass('dotpay-main-chosen');
+        container.on('click', onChosenToggle);
+        return container;
+    }
     function onClick(e) {
         e.preventDefault();
         widgetContainer.find('.'+config.view.channelContainer).removeClass('selected');
         $(e.currentTarget).addClass('selected').find('input').prop('checked', true);
         selected = e.channel = channels[parseInt($(e.currentTarget).attr('data-key'))];
+        $('.'+config.view.chosenContainer).html('').append(copyChannelContainer(e.currentTarget));
+        onChosenToggle(e);
         config.event.onChoose(e);
     }
     return {
         init: function(env) {
             config = env.config;
             widgetContainer = $('.'+config.view.widgetContainer).html('');
+            //append error container
             var errorMessage = $(document.createElement('div')).addClass(config.view.errorContainer);
             widgetContainer.append(errorMessage);
+            //append container for chosen channel
+            var chosenChannel = $(document.createElement('div')).addClass(config.view.chosenContainer);
+            widgetContainer.append(chosenChannel);
             return widgetContainer;
         },
         showLoader: function() {

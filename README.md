@@ -35,6 +35,8 @@ If you don't give the `configuration` parameter to `init()` function, it still c
 
 HTML element with class given in `view.widgetContainer` property has to exist when `window.dotpayWidget.init()` function is executed. For more details look at [Examples](#examples)
 
+When you have chosen a payment channel, all channels slides up. If you want to display them again, you have to click the chosen channel.
+
 ### Configuration
 This table contains all values you can set in widget configuration.
 
@@ -47,11 +49,12 @@ This table contains all values you can set in widget configuration.
 | request.host           | string   | Host of request where is available data with payment channels                                                                   | *see more [details](#location-of-data-source)* |
 | request.test           | boolean  | Flag if test mode is used                                                                                                       | false                                          |
 | request.disabled       | string   | Value which informs how mode of displaying disabled channels is active (*see more [details](#displaying-of-disabled-channels)*) | `mark`                                         |
-| request.hiddenChannels | array    | Array of channel numbers which will not be displayed. This feature doesn't depend on data from server                           | null                                         |
+| request.hiddenChannels | array    | Array of channel numbers which will not be displayed. This feature doesn't depend on data from server                           | null                                           |
 | request.groups         | array    | Array of channel group ids which are displayed. If none is specified, channels from all groups will be displayed.               | null                                           |
 | view.widgetContainer   | string   | Class name of widget container                                                                                                  | `dotpay-widget-container`                      |
 | view.channelContainer  | string   | Class name of single channel container                                                                                          | `dotpay-channel`                               |
 | view.errorContainer    | string   | Class name of error container                                                                                                   | `dotpay-widget-error`                          |
+| view.chosenContainer   | string   | Class name of container for chosen channel                                                                                      | `dotpay-chosen-container`                      |
 | event.onLoad           | function | Handler of 'load widget' event (*see more [details](#events)*)                                                                  | *empty function*                               |
 | event.onChoose         | function | Handler of 'select channel' event (*see more [details](#events)*)                                                               | *empty function*                               |
 
