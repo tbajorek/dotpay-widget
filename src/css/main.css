@@ -1,10 +1,10 @@
 .dotpay-loader {
-    border: 7px solid #f3f3f3;
-    border-top: 7px solid #922224;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #922224;
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    animation: spin 1.5s cubic-bezier(0.03, 0.17, 0.96, 0.87) infinite;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s cubic-bezier(0.03, 0.17, 0.96, 0.87) infinite;
     margin: 10px auto auto;
 }
 
@@ -87,6 +87,7 @@
     opacity: 0.9;
     width: 140px;
     display: none;
+    font-size: 14px;
 }
 
 .dotpay-channel .dotpay-logo-container {
@@ -98,18 +99,23 @@
 
 .dotpay-channel img {
     width: 100px;
+    max-height: 50px;
 }
 
 .dotpay-body-container {
     width: 100%;
-    bottom: 8px;
+    bottom: 0px;
     left: 0;
-    font-size: 13px;
+    font-size: 12px;
     text-align: center !important;
     position: absolute;
     margin-top: 2px;
     margin-bottom: 2px;
     display: block !important;
+}
+
+.dotpay-chosen-container {
+    margin-bottom: 10px;
 }
 
 .dotpay-main-chosen {

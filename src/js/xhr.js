@@ -13,12 +13,20 @@ define("xhr", ["jquery"], function($) {
             return callback(data[field]);
         }
     }
+    function transformBooleans(data) {
+        for(var key in data) {
+            data[key].is_disable = data[key].is_disable == 'True';
+            data[key].is_not_online = data[key].is_not_online == 'True';
+        }
+        return data;
+    }
     function filterHiddenChannels(data, filter) {
         if(filter !== null && filter.length > 0) {
             var newData = [];
             for(var key in data) {
                 if(filter.indexOf(data[key].id)<0) {
-                    newData[newData.length] = data[key];
+                    var index = newData.length;
+                    newData[index] = data[key];
                 }
             }
             data = newData;
@@ -59,19 +67,20 @@ define("xhr", ["jquery"], function($) {
             $.getJSON(buildUrl(config)).done(function(d){
                 data = d;
                 if(field === 'channels') {
-                    data.channels = filterHiddenChannels(
-                        filterGroups(
-                            filterDisabled(
-                                data.channels,
-                                config.request.disabled
+                    data.channels = transformBooleans(
+                        filterHiddenChannels(
+                            filterGroups(
+                                filterDisabled(
+                                    data.channels,
+                                    config.request.disabled
+                                ),
+                                config.request.groups
                             ),
-                            config.request.groups
-                        ),
-                        config.request.hiddenChannels
+                            config.request.hiddenChannels
+                        )
                     );
                 }
                 config.event.onLoad(data);
-                view.hideLoader();
                 call(callback, data, field);
             }).fail(function(jqxhr, status, e) {
                 error.display("Request to server failed: " + status + " " + e);

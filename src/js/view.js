@@ -3,18 +3,30 @@
  */
 define("view", ["jquery"], function($) {
     var config, channels, selected = null;
-    var widgetContainer;
+    var widgetContainer = null, loaded = 0;
+    function onHideLoader() {
+        widgetContainer.find('.dotpay-loader').fadeIn(500, function(){
+            $(this).remove();
+        });
+        widgetContainer.find('.dotpay-channels-container').fadeIn(500);
+    }
+    function loadImage() {
+        ++loaded;
+        if(loaded == channels.length) {
+            onHideLoader();
+        }
+    }
     function renderOneChannel(channel, key) {
         // channel container
         var channelContainer = $(document.createElement('div')).addClass(config.view.channelContainer).attr('data-key', key);
         //inactive channel
-        if(config.request.disabled !== 'display' && channel.is_disable === 'True') {
+        if(config.request.disabled !== 'display' && channel.is_disable === true) {
             channelContainer.addClass('inactive');
             if(typeof channel.disable_message !== 'undefined' && config.view.information) {
                 var information = $(document.createElement('span')).addClass('dotpay-information').html(channel.disable_message);
                 channelContainer.append(information);
             }
-        } else if(channel.is_not_online === 'True') {
+        } else if(channel.is_not_online === true) {
             channelContainer.addClass('inactive');
             if(typeof channel.not_online_message !== 'undefined' && config.view.information) {
                 var information = $(document.createElement('span')).addClass('dotpay-information').html(channel.not_online_message);
@@ -22,14 +34,14 @@ define("view", ["jquery"], function($) {
             }
         }
         //channel logo
-        var logo = $(document.createElement('img')).attr('src', channel.logo);
+        var logo = $(document.createElement('img')).on('load', loadImage).attr('src', channel.logo);
         var logoContainer = $(document.createElement('div')).addClass('dotpay-logo-container').append(logo);
         channelContainer.append(logoContainer);
         //channel body
-        var bodyContainer = $(document.createElement('div')).addClass('dotpay-body-container')
+        var bodyContainer = $(document.createElement('div')).addClass('dotpay-body-container');
         var input = $(document.createElement('input')).attr('type', 'radio').attr('name', 'channel').attr('id', 'dotpay-channel-'+channel.id).val(channel.id);
         bodyContainer.append(input);
-        var label = $(document.createElement('label')).attr('for', 'dotpay-channel-'+channel.id).html(channel.name);
+        var label = $(document.createElement('label')).html(channel.name);
         bodyContainer.append(label);
         channelContainer.append(bodyContainer);
         return channelContainer;
@@ -90,18 +102,13 @@ define("view", ["jquery"], function($) {
             var loader = $(document.createElement('div')).addClass('dotpay-loader');
             widgetContainer.append(loader);
         },
-        hideLoader: function() {
-            widgetContainer.find('.dotpay-loader').fadeIn(400, function(){
-                $(this).remove();
-            });
-        },
+        hideLoader: onHideLoader,
         render: function(data) {
             channels = data;
             widgetContainer.append(renderChannels(data));
             widgetContainer.find('.'+config.view.channelContainer).on('click', onClick);
             widgetContainer.find('.'+config.view.channelContainer).on('mouseover', onOver);
             widgetContainer.find('.'+config.view.channelContainer).on('mouseout', onOut);
-            widgetContainer.find('.dotpay-channels-container').fadeIn();
         },
         getSelected: function() {
             return selected;

@@ -4,8 +4,7 @@
   "description": "Dotpay widget allows merchants to offer displayed payment channels list in their shops",
   "main": "dist/widget.js",
   "scripts": {
-    "build": "webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node_modules/.bin/webpack --config webpack.config.js"
   },
   "keywords": [
     "dotpay",
@@ -14,6 +13,9 @@
   ],
   "author": "Tomasz Bajorek <tbajorek3@gmail.com>",
   "license": "MIT",
+  "dependencies": {
+    "jquery": ">=3.0"
+  },
   "devDependencies": {
     "css-loader": "^0.28.4",
     "style-loader": "^0.18.2",
@@ -22,8 +24,5 @@
   "bugs": {
     "url": "https://github.com/tbajorek/dotpay-widget/issues"
   },
-  "homepage": "https://github.com/tbajorek/dotpay-widget",
-  "scripts": {
-    "start": "node_modules/.bin/webpack --config webpack.config.js"
-  }
+  "homepage": "https://github.com/tbajorek/dotpay-widget"
 }

@@ -81,7 +81,31 @@ You can use own data source. It requires to have available JSON data which forma
 Widget allows to use two handlers. They are functions which get one parameter. Handlers handles following events:
 
  - `onLoad` - widget has been loaded successfully; parameter contains data of all channels loaded from data source; the structure is the same as in the source;
- - `onChoose` - payment channel has been chosen by user; parameter contains jQuery event details; additional property is `e.channel` where is located data of selected channel with information compatible with data source (this is when `e` is the name of handler parameter).
+ - `onChoose` - payment channel has been chosen by user; parameter contains jQuery event details.
+
+Events
+------
+This widget offers two types of events: loading of its data from Dotpay server and choosing selected channel. Handlers are functions which take one argument - event data. It's the same object as for handlers given to native JavaScript function.
+
+### onLoad
+The event is executed on the main widget object so its reference is given in the argument of handler.
+
+### onChoose
+This event is executed when a payment channel has been selected. Single argument of its handler has additional property `e.channel` where is located data of selected channel with information compatible with data source (this is when `e` is the name of handler parameter).
+
+Elements of `e.channel` object are described in this table:
+
+| Property           | Type     | Description                                                            |
+|--------------------|----------|------------------------------------------------------------------------|
+| id                 | int      | Payment channel id                                                     |
+| name               | string   | Name of channel                                                        |
+| logo               | string   | Url of payment channel's logo                                          |
+| group              | string   | Group of channel                                                       |
+| group_name         | string   | Group name of channel                                                  |
+| short_name         | string   | Simplified name of channel                                             |
+| is_disable         | boolean  | Boolean flag if channel is disabled by Dotpay                          |
+| is_not_online      | boolean  | Boolean flag if channel is not online (not automatical payment)        |
+| warranty_available | boolean  | Boolean flag about warranty availability                               |
 
 Examples
 -------------
@@ -95,7 +119,12 @@ Examples
         <title>Dotpay Widget</title>
         <script src="../dist/widget.js"></script>
         <script>
-	    //configuration and initialization of widget
+        var dotpayConfig = {
+            //widget configuration
+        };
+        window.dotpayWidget.jQuery(document).ready(function(){
+            window.dotpayWidget.init(dotpayConfig);
+        });
         </script>
     </head>
     <body>

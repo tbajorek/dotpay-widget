@@ -19,9 +19,9 @@ define('widget', ['jquery', './config', './error', './xhr', './view'], function(
                 env.config = config(cfg);
             }
             var widgetObject = env.view.init(env);
+            env.view.showLoader();
             env.error.init(env);
             env.xhr.init(env);
-            env.view.showLoader();
             env.xhr.callForChannels(env.view.render);
             return widgetObject;
         },

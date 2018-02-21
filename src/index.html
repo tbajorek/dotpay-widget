@@ -5,7 +5,12 @@
         <title>Dotpay Widget</title>
         <script src="../dist/widget.js"></script>
         <script>
+            var dotpayConfig = {
 
+            };
+            window.dotpayWidget.jQuery(document).ready(function(){
+                window.dotpayWidget.init(dotpayConfig);
+            });
         </script>
     </head>
     <body>
