@@ -87,7 +87,10 @@
     opacity: 0.9;
     width: 140px;
     display: none;
-    font-size: 14px;
+    font-size: 14px !important;
+    font-family: serif !important;
+    font-weight: 400;
+    line-height: 12px;
 }
 
 .dotpay-channel .dotpay-logo-container {
@@ -100,6 +103,7 @@
 .dotpay-channel img {
     width: 100px;
     max-height: 50px;
+    margin: auto;
 }
 
 .dotpay-body-container {
@@ -112,6 +116,13 @@
     margin-top: 2px;
     margin-bottom: 2px;
     display: block !important;
+}
+
+.dotpay-body-container label {
+    font-size: 12px;
+    font-family: serif !important;
+    font-weight: 400;
+    line-height: 12px;
 }
 
 .dotpay-chosen-container {

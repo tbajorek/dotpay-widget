@@ -1,6 +1,6 @@
 {
   "name": "dotpay_widget",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Dotpay widget allows merchants to offer displayed payment channels list in their shops",
   "main": "dist/widget.js",
   "scripts": {

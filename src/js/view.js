@@ -48,8 +48,8 @@ define("view", ["jquery"], function($) {
     }
     function renderChannels(channels) {
         var container = $(document.createElement('div')).addClass('dotpay-channels-container');
-        for(var key in channels) {
-            container.append(renderOneChannel(channels[key], key));
+        for(var i = 0; i < channels.length; ++i) {
+            container.append(renderOneChannel(channels[i], i));
         }
         return container;
     }
